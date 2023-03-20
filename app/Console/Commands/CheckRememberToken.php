@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Console\Command;
+use Nette\Utils\Random;
 
 class CheckRememberToken extends Command
 {
@@ -33,7 +34,7 @@ class CheckRememberToken extends Command
         if ($users->count() > 0) {
             foreach ($users as $user) {
                 $user->update([
-                    'remember_token' => Carbon::now(),
+                    'remember_token' => Random::generate(),
                 ]);
             }
         }
