@@ -11,9 +11,10 @@ use App\Http\Responses\ApiSuccessResponse;
 class UserListController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * @param Request $request
+     * @return ApiErrorResponse|ApiSuccessResponse|mixed
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): mixed
     {
         if (Cache::get(User::CACHE_USER_LIST_KEY)) {
             return Cache::get(User::CACHE_USER_LIST_KEY);
